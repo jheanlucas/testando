@@ -35,7 +35,7 @@ header {
 }
 
 #input_csv {
-    color: white;
+    color: black;
 }
 
 .botao {
@@ -51,7 +51,7 @@ header {
 
 .botao:hover {
     transform: translateY(-3px);
-    background-color: #d2d2d3;
+    background-color: rgb(144, 144, 144);
 }
 
 .botao:active {
@@ -63,7 +63,11 @@ header {
 }
 
 #limpar_estoque {
-     background-color: rgb(255, 84, 84);
+    background-color: rgb(255, 84, 84);
+}
+
+#limpar_vendas {
+    background-color: rgb(255, 84, 84);
 }
 
 main {
@@ -249,12 +253,12 @@ select {
     background: #f0f0f0;
 }
 
-#botao_vender {
+.botao_vender {
     background-color: rgba(80, 255, 80, 0.901);
     font-weight: bold;
 }
 
-#botao_tirar {
+.botao_tirar {
     background-color: rgba(255, 46, 46, 0.929);
     font-weight: bold;
 }
@@ -266,11 +270,12 @@ select {
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.55);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(3px);
 }
 
 .hidden {
@@ -278,20 +283,55 @@ select {
 }
 
 .modal_content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  width: 320px;
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  width: 340px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  animation: aparecer 0.25s ease-out;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal_content h2 {
+  margin-bottom: 18px;
+  text-align: center;
+  color: #333;
 }
 
 .campo {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .campo label {
   display: block;
-  font-weight: bold;
-  margin-bottom: 4px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.campo input, .campo select {
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.campo input:focus, .campo select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
 }
 
 .numeracoes {
@@ -301,23 +341,64 @@ select {
 }
 
 .numero {
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 6px 14px;
+  border-radius: 10px;
   border: 1px solid #ccc;
   cursor: pointer;
+  background: #f5f5f5;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.numero:hover {
+  background: #e9e9e9;
 }
 
 .numero.selecionado {
   background: #007bff;
   color: white;
   border-color: #007bff;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
 }
 
 .acoes {
   display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
+  gap: 10px;
+  margin-top: 18px;
 }
+
+.acoes button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+}
+
+#cancelar_venda {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+#cancelar_venda:hover {
+  background: #f5c6cb;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(220, 53, 69, 0.25);
+}
+
+#confirmar_venda {
+  background: #d4edda;
+  color: #155724;
+}
+
+#confirmar_venda:hover {
+  background: #c3e6cb;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.25);
+}
+
 
 @media screen and (max-width: 700px) {
     header {
@@ -363,4 +444,145 @@ select {
         margin: 2px 6px;
         line-height: 1.2;
     }
+
+    .botoes {
+        columns: 2;
+    }
+}
+
+
+/* ============================= */
+/* AJUSTES VISUAIS (SEM LAYOUT) */
+/* ============================= */
+
+html, body {
+    font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+    background-color: #f4f6f8;
+    color: #1f2937;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+}
+
+.subtitulo {
+    color: #e5edff;
+}
+
+/* BOTÕES */
+.botao {
+    background-color: #ffffff;
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+#estoque_local {
+    background-color: #22c55e;
+    color: white;
+}
+
+#limpar_estoque {
+    background-color: #ef4444;
+    color: white;
+}
+
+#limpar_vendas {
+    background-color: #ef4444;
+    color: white;
+}
+
+/* FILTROS */
+#filtros {
+    background-color: #ffffff;
+}
+
+.filtro label {
+    color: #374151;
+    font-weight: 600;
+}
+
+.filtro input,
+.filtro select {
+    border-color: #d1d5db;
+}
+
+/* CATEGORIAS */
+.cat {
+    background-color: #f9fafb;
+    color: #374151;
+}
+
+.cat:hover,
+.cat.ativo {
+    background-color: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* CONTEÚDO */
+#conteudo {
+    background-color: #ffffff;
+}
+
+/* CARDS */
+.card {
+    background-color: #ffffff;
+}
+
+.card h3 {
+    color: #111827;
+    font-weight: 700;
+}
+
+.card p {
+    color: #4b5563;
+}
+
+/* BOTÕES DOS CARDS */
+.botao_vender {
+    background-color: #22c55e;
+    color: white;
+}
+
+.botao_tirar {
+    background-color: #ef4444;
+    color: white;
+}
+
+/* MODAL */
+.modal_content {
+    background-color: #ffffff;
+}
+
+.modal_content h2 {
+    color: #111827;
+}
+
+/* NUMERAÇÕES */
+.numero.selecionado {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+/* AÇÕES */
+#confirmar_venda {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+#cancelar_venda {
+    background-color: #fee2e2;
+    color: #7f1d1d;
+}
+
+#nome_do_modal {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #444;
+    text-transform: uppercase;
+}
+
+#nome_modal {
+    font-weight: bold;
 }

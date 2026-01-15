@@ -17,7 +17,8 @@
             <button class="botao" id="exportar_vendas">Vendas</button>
             <button class="botao" id="exportar_estoque">Estoque</button>
             <button class="botao" id="estoque_local">Mostrar Estoque</button>
-             <button class="botao" id="limpar_estoque">Limpar Estoque</button>
+            <button class="botao" id="limpar_estoque">Limpar Estoque</button>
+            <button class="botao" id="limpar_vendas">Limpar Vendas</button>
         </div>
     </header>
     <main>
@@ -69,13 +70,13 @@
             <!-- Marca (datalist) -->
             <div class="filtro filtro_pesquisa">
                 <label for="marca">Marca</label>
-                <input type="text" id="marca" placeholder="Todas" data-valores="Nike,Adidas,Puma,Olympikus">
+                <input type="text" id="marca" placeholder="Todas" data-valores=",Nike,Adidas,Puma,Olympikus">
             </div>
 
             <!-- Cor (datalist) -->
             <div class="filtro filtro_pesquisa">
                 <label for="cor">Cor</label>
-                <input type="text" id="cor" placeholder="Todas" data-valores="Preto,Branco,Azul,Vermelho">
+                <input type="text" id="cor" placeholder="Todas" data-valores=",Preto,Branco,Azul,Vermelho">
             </div>
 
             <!-- Categorias -->
@@ -107,10 +108,14 @@
         <div class="modal_content">
             <h2>Registrar Venda</h2>
 
+            <div id="nome_do_modal">
+                <p id="nome_modal"></p>
+            </div>
+
             <!-- Numerações -->
             <div class="campo">
-            <label>Numeração</label>
-            <div id="numeracoes_container" class="numeracoes"></div>
+                <label>Numeração</label>
+                <div id="numeracoes_container" class="numeracoes"></div>
             </div>
 
             <!-- Preço -->
@@ -121,14 +126,14 @@
 
             <!-- Forma de pagamento -->
             <div class="campo">
-            <label>Forma de pagamento</label>
-            <select id="pagamento" required>
-                <option value="">Selecione</option>
-                <option value="pix">Pix</option>
-                <option value="debito">Cartão Débito</option>
-                <option value="avista">À vista</option>
-                <option value="credito">Cartão Crédito</option>
-            </select>
+                <label>Forma de pagamento</label>
+                <select id="pagamento" required>
+                    <option value="">Selecione</option>
+                    <option value="pix">Pix</option>
+                    <option value="debito">Cartão Débito</option>
+                    <option value="avista">À vista</option>
+                    <option value="credito">Cartão Crédito</option>
+                </select>
             </div>
 
             <!-- Parcelas -->
