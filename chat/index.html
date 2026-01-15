@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque - Vendas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo_completa">
+            <h1 class="logo_com_titulo"><img src="https://cdn-icons-png.flaticon.com/512/32/32339.png" alt="Estoque" class="logo"> Estoque</h1>
+            <p>Gerenciamento de Produtos</p>
+        </div>
+        <div class="header-right">
+            <input type="file" id="csvFile" accept=".csv">
+            <button id="exportSales">Vendas do Dia</button>
+            <button id="exportStock">Exportar Estoque</button>
+        </div>
+    </header>
+
+    <div class="controls">
+        <input type="text" id="search" placeholder="Pesquisar produtos...">
+        <div id="categoryFilter"></div>
+    </div>
+
+    <div class="cards-container" id="produtos"></div>
+
+    <!-- Modal de venda -->
+    <div id="modalVenda" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Vender Produto</h2>
+            <p id="modalProdutoNome"></p>
+            <label>Preço da venda:</label>
+            <input type="number" id="modalPreco" placeholder="Digite o preço" step="0.01">
+            <label>Tipo de pagamento:</label>
+            <select id="modalPagamento">
+                <option value="pix">PIX</option>
+                <option value="debito">Cartão Débito</option>
+                <option value="credito">Cartão Crédito</option>
+                <option value="avista">À vista</option>
+            </select>
+            <div id="parcelasContainer" style="display:none;">
+                <label>Número de parcelas:</label>
+                <input type="number" id="modalParcelas" min="1" value="1">
+            </div>
+            <button id="confirmVenda">Confirmar Venda</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

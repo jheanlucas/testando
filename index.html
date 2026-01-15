@@ -1,11 +1,156 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Junior Calçados</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Estoque</title>
 </head>
 <body>
-    <img src="image/imagem_menor2.png" alt="">
+    <header>
+        <div class="lado_esquerdo">
+            <img src="logo_loja.png" alt="logo_da_loja" id="logo">
+            <p class="subtitulo">Gerenciamento de Estoque</p>
+        </div>
+        <div class="botoes">
+            <input type="file" id="input_csv" accept=".csv" class="botao" required>
+            <button class="botao" id="exportar_vendas">Vendas</button>
+            <button class="botao" id="exportar_estoque">Estoque</button>
+            <button class="botao" id="estoque_local">Mostrar Estoque</button>
+             <button class="botao" id="limpar_estoque">Limpar Estoque</button>
+        </div>
+    </header>
+    <main>
+        <div id="filtros">
+            <div class="filtro">
+                <label for="pesquisa">Pesquisar</label>
+                <input type="text" id="pesquisa" placeholder="Buscar por nome do produto">
+            </div>
+
+            <!-- Numeração -->
+            <div class="filtro">
+                <label for="numeracao">Numeração</label>
+                <select id="numeracao">
+                    <option value="">Todas</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                    <option value="46">46</option>
+                    <option value="47">47</option>
+                    <option value="48">48</option>
+                </select>
+            </div>
+
+            <!-- Marca (datalist) -->
+            <div class="filtro filtro_pesquisa">
+                <label for="marca">Marca</label>
+                <input type="text" id="marca" placeholder="Todas" data-valores="Nike,Adidas,Puma,Olympikus">
+            </div>
+
+            <!-- Cor (datalist) -->
+            <div class="filtro filtro_pesquisa">
+                <label for="cor">Cor</label>
+                <input type="text" id="cor" placeholder="Todas" data-valores="Preto,Branco,Azul,Vermelho">
+            </div>
+
+            <!-- Categorias -->
+            <div class="filtro categorias">
+                <label>Categorias</label>
+                <div class="botoes-categorias">
+                    <button class="cat">Tênis</button>
+                    <button class="cat">Casual</button>
+                    <button class="cat">Social</button>
+                    <button class="cat">Esportivo</button>
+                    <button class="cat">Chinelo</button>
+                    <button class="cat">Bota</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="conteudo">
+            <div id="cards">
+
+            </div>
+            <div id="secoes">
+
+            </div>
+        </div>
+    </main>
+
+
+    <div id="modal_venda" class="modal hidden">
+        <div class="modal_content">
+            <h2>Registrar Venda</h2>
+
+            <!-- Numerações -->
+            <div class="campo">
+            <label>Numeração</label>
+            <div id="numeracoes_container" class="numeracoes"></div>
+            </div>
+
+            <!-- Preço -->
+            <div class="campo">
+            <label>Preço</label>
+            <input type="number" id="preco" required min="0" step="0.01">
+            </div>
+
+            <!-- Forma de pagamento -->
+            <div class="campo">
+            <label>Forma de pagamento</label>
+            <select id="pagamento" required>
+                <option value="">Selecione</option>
+                <option value="pix">Pix</option>
+                <option value="debito">Cartão Débito</option>
+                <option value="avista">À vista</option>
+                <option value="credito">Cartão Crédito</option>
+            </select>
+            </div>
+
+            <!-- Parcelas -->
+            <div class="campo hidden" id="campo_parcelas">
+            <label>Parcelas</label>
+            <select id="parcelas">
+                <option value="1" selected>1x</option>
+                <option value="2">2x</option>
+                <option value="3">3x</option>
+                <option value="4">4x</option>
+                <option value="5">5x</option>
+            </select>
+            </div>
+
+            <!-- Botões -->
+            <div class="acoes">
+            <button id="cancelar_venda">Cancelar</button>
+            <button id="confirmar_venda">Vender</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
 </body>
 </html>

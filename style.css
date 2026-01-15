@@ -1,0 +1,366 @@
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background-color: #007BFF;
+}
+
+.lado_esquerdo {
+    text-align: center;
+}
+
+#logo {
+    max-width: 110px;
+    height: auto;
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    color: white;
+}
+
+#input_csv {
+    color: white;
+}
+
+.botao {
+    margin-left: 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botao:hover {
+    transform: translateY(-3px);
+    background-color: #d2d2d3;
+}
+
+.botao:active {
+    background-color: rgb(255, 0, 0);
+}
+
+#estoque_local {
+    background-color: rgb(109, 182, 109);
+}
+
+#limpar_estoque {
+     background-color: rgb(255, 84, 84);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 80px);
+}
+
+#filtros {
+    background-color: white;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+}
+
+.filtro label {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    color: #444;
+}
+
+.filtro input, .filtro select {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+.categorias {
+    grid-column: 1 / -1;
+}
+
+.botoes-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.cat {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #f4f6f8;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.cat:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.cat.ativo {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+select {
+    max-height: 50px;
+}
+
+#conteudo {
+    background-color: white;
+    margin: 16px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+
+#cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 380px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card .imagem_card {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 10px 5px 5px 5px;
+    word-break: break-word;
+    flex-shrink: 0;
+}
+
+.card p {
+    font-size: 0.9rem;
+    margin: 4px 10px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.card p:nth-of-type(2), .card p:nth-of-type(3) {
+    font-weight: 500;
+}
+
+.card p {
+    max-width: 90%;
+}
+
+#secoes {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid #eee;
+}
+
+#secoes button {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#secoes button:hover {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+.filtro_pesquisa {
+    position: relative;
+}
+
+.filtro_pesquisa .dropdown-pesquisa {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    display: block;
+    z-index: 999;
+}
+
+.filtro_pesquisa .dropdown-pesquisa li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.filtro_pesquisa .dropdown-pesquisa li:hover {
+    background: #f0f0f0;
+}
+
+#botao_vender {
+    background-color: rgba(80, 255, 80, 0.901);
+    font-weight: bold;
+}
+
+#botao_tirar {
+    background-color: rgba(255, 46, 46, 0.929);
+    font-weight: bold;
+}
+
+#numeros {
+    font-weight: bold;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal_content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 320px;
+}
+
+.campo {
+  margin-bottom: 12px;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.numeracoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.numero {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.numero.selecionado {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.acoes {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 700px) {
+    header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    #logo {
+        max-width: 130px;
+    }
+
+    .botao {
+        margin: 4px;
+        width: 100%;
+        max-width: 220px;
+    }
+
+    #cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .card {
+        min-height: auto;
+        padding-bottom: 10px;
+    }
+
+    .card .imagem_card {
+        height: 120px;
+        padding: 6px;
+    }
+
+    .card h3 {
+        font-size: 0.95rem;
+        margin: 6px 6px 4px;
+        line-height: 1.2;
+    }
+
+    .card p {
+        font-size: 0.8rem;
+        margin: 2px 6px;
+        line-height: 1.2;
+    }
+}
