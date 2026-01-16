@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vendas.css">
+    <title>Vendas</title>
+</head>
+<body>
+    <header>
+        <div class="lado_esquerdo">
+            <img src="logo_loja.png" alt="logo_da_loja" id="logo">
+            <p class="subtitulo">Vendas</p>
+        </div>
+        <div class="botoes">
+            <input type="file" id="input_vendas" accept=".csv" class="botao">
+            <button class="botao" id="limpar_vendas">Limpar Vendas</button>
+            <button class="botao" id="adicionar_venda">Adicionar Venda</button>
+            <button class="botao" id="voltar">Voltar</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="cards_vendas">
+            <!-- Cards de vendas vão aparecer aqui -->
+        </div>
+    </main>
+
+    <div id="modal_venda_manual" class="modal hidden">
+        <div class="modal_content">
+            <h2>Adicionar Venda</h2>
+
+            <div class="campo">
+                <label>Nome</label>
+                <input type="text" id="v_nome" required>
+            </div>
+
+            <div class="campo filtro_pesquisa">
+                <label>Marca</label>
+                <input
+                    type="text"
+                    id="v_marca"
+                    placeholder="Digite a marca"
+                    data-valores=",Nike,Adidas,Puma,Olympikus"
+                    required
+                >
+            </div>
+
+            <div class="campo filtro_pesquisa">
+                <label>Cor</label>
+                <input
+                    type="text"
+                    id="v_cor"
+                    placeholder="Digite a cor"
+                    data-valores=",Preto,Branco,Azul,Vermelho"
+                    required
+                >
+            </div>
+
+            <div class="campo">
+                <label>Numeração</label>
+                <select id="v_numero" required>
+                    <option value="">Selecione</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                    <option value="46">46</option>
+                    <option value="47">47</option>
+                    <option value="48">48</option>
+                </select>
+            </div>
+
+
+            <div class="campo">
+                <label>Preço</label>
+                <input type="number" id="v_preco" min="0" step="0.01" required>
+            </div>
+
+            <div class="campo">
+                <label>Pagamento</label>
+                <select id="v_pagamento" required>
+                    <option value="">Selecione</option>
+                    <option value="pix">Pix</option>
+                    <option value="debito">Débito</option>
+                    <option value="avista">À vista</option>
+                    <option value="credito">Crédito</option>
+                </select>
+            </div>
+
+            <div class="campo hidden" id="v_campo_parcelas">
+                <label>Parcelas</label>
+                <select id="v_parcelas">
+                    <option value="1">1x</option>
+                    <option value="2">2x</option>
+                    <option value="3">3x</option>
+                    <option value="4">4x</option>
+                    <option value="5">5x</option>
+                </select>
+            </div>
+
+            <div class="campo categorias">
+                <label>Categorias</label>
+                <div class="botoes-categorias" id="v_categorias" aria-required="true">
+                    <div class="cat">Tênis</div>
+                    <div class="cat">Casual</div>
+                    <div class="cat">Social</div>
+                    <div class="cat">Esportivo</div>
+                    <div class="cat">Chinelo</div>
+                    <div class="cat">Bota</div>
+                </div>
+            </div>
+
+            <div class="acoes">
+                <button id="cancelar_venda_manual" class="btn-cancelar">Cancelar</button>
+                <button id="confirmar_venda_manual" class="btn-confirmar">Salvar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="vendas.js"></script>
+</body>
+</html>

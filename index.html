@@ -7,28 +7,33 @@
     <title>Estoque</title>
 </head>
 <body>
+    <!--Cabeçalho-->
     <header>
         <div class="lado_esquerdo">
             <img src="logo_loja.png" alt="logo_da_loja" id="logo">
             <p class="subtitulo">Gerenciamento de Estoque</p>
         </div>
         <div class="botoes">
-            <input type="file" id="input_csv" accept=".csv" class="botao" required>
             <button class="botao" id="exportar_vendas">Vendas</button>
             <button class="botao" id="exportar_estoque">Estoque</button>
-            <button class="botao" id="estoque_local">Mostrar Estoque</button>
             <button class="botao" id="limpar_estoque">Limpar Estoque</button>
-            <button class="botao" id="limpar_vendas">Limpar Vendas</button>
+            <button class="botao" id="estoque_local">Mostrar Estoque</button>
+            <input type="file" id="input_csv" accept=".csv" class="botao" required>
         </div>
+        <a class="botao" id="visualizar_vendas" href="vendas.html">Visualizar Vendas</a>
     </header>
+
+    <!--Conteúdo da página-->
     <main>
         <div id="filtros">
+            
+            <!--filtro de texto-->
             <div class="filtro">
                 <label for="pesquisa">Pesquisar</label>
                 <input type="text" id="pesquisa" placeholder="Buscar por nome do produto">
             </div>
 
-            <!-- Numeração -->
+            <!--filtro de numeração-->
             <div class="filtro">
                 <label for="numeracao">Numeração</label>
                 <select id="numeracao">
@@ -67,66 +72,70 @@
                 </select>
             </div>
 
-            <!-- Marca (datalist) -->
+            <!--filtro de marca-->
             <div class="filtro filtro_pesquisa">
                 <label for="marca">Marca</label>
                 <input type="text" id="marca" placeholder="Todas" data-valores=",Nike,Adidas,Puma,Olympikus">
             </div>
 
-            <!-- Cor (datalist) -->
+            <!--filtro de cor-->
             <div class="filtro filtro_pesquisa">
                 <label for="cor">Cor</label>
                 <input type="text" id="cor" placeholder="Todas" data-valores=",Preto,Branco,Azul,Vermelho">
             </div>
 
-            <!-- Categorias -->
+            <!--filtro de categorias-->
             <div class="filtro categorias">
-                <label>Categorias</label>
-                <div class="botoes-categorias">
-                    <button class="cat">Tênis</button>
-                    <button class="cat">Casual</button>
-                    <button class="cat">Social</button>
-                    <button class="cat">Esportivo</button>
-                    <button class="cat">Chinelo</button>
-                    <button class="cat">Bota</button>
+                <label for="botoes_das_categorias">Categorias</label>
+                <div id="botoes_das_categorias">
+                    <button class="categoria">Tênis</button>
+                    <button class="categoria">Casual</button>
+                    <button class="categoria">Social</button>
+                    <button class="categoria">Esportivo</button>
+                    <button class="categoria">Chinelo</button>
+                    <button class="categoria">Bota</button>
                 </div>
             </div>
         </div>
 
+        <!--Aqui é o conteudo principal-->
         <div id="conteudo">
+            <!--Aqui é onde fica os cards-->
             <div id="cards">
-
             </div>
-            <div id="secoes">
 
-            </div>
+            <!--Aqui é onde fica o botao de ver mais-->
+
         </div>
     </main>
 
-
-    <div id="modal_venda" class="modal hidden">
-        <div class="modal_content">
-            <h2>Registrar Venda</h2>
-
-            <div id="nome_do_modal">
-                <p id="nome_modal"></p>
+    <!--modal para adicionar venda-->
+    <div id="modal_de_venda" class="modal hidden" aria-modal="true" role="dialog" aria-labelledby="titulo_modal" aria-hidden="true">
+        <!--Aqui é onde fica as informações do modal-->
+        <div class="conteudo_do_modal">
+            <h2 id="titulo_modal">Registrar Venda</h2>
+            
+            <!--Aqui é o nome do produto-->
+            <div id="nome_modal">
+                <p id="nome_do_produto"></p>
             </div>
 
-            <!-- Numerações -->
+            <!--Aqui você escolhe a numeração-->
             <div class="campo">
-                <label>Numeração</label>
+                <label>Numerações</label>
+                <!--Aqui é onde fica as numerações-->
                 <div id="numeracoes_container" class="numeracoes"></div>
             </div>
 
-            <!-- Preço -->
+            <!--Aqui você escolhe o preço do produto-->
             <div class="campo">
-            <label>Preço</label>
-            <input type="number" id="preco" required min="0" step="0.01">
+                <label for="preco">Preço</label>
+                <input type="number" id="preco" min="0" step="0.01" max="1000" required>
             </div>
 
-            <!-- Forma de pagamento -->
+            <!--Aqui você escolhe a forma de pagamento-->
             <div class="campo">
-                <label>Forma de pagamento</label>
+                <label for="pagamento">Forma de pagamento</label>
                 <select id="pagamento" required>
                     <option value="">Selecione</option>
                     <option value="pix">Pix</option>
@@ -136,23 +145,78 @@
                 </select>
             </div>
 
-            <!-- Parcelas -->
-            <div class="campo hidden" id="campo_parcelas">
-            <label>Parcelas</label>
-            <select id="parcelas">
-                <option value="1" selected>1x</option>
-                <option value="2">2x</option>
-                <option value="3">3x</option>
-                <option value="4">4x</option>
-                <option value="5">5x</option>
-            </select>
+            <!--Essa parte só aparece se for cartão de crédito-->
+            <div class="campo hidden" id="campo_de_parcelas">
+                <label for="parcelas">Parcelas</label>
+                <select id="parcelas">
+                    <option value="1" selected>1x</option>
+                    <option value="2">2x</option>
+                    <option value="3">3x</option>
+                    <option value="4">4x</option>
+                    <option value="5">5x</option>
+                </select>
             </div>
 
-            <!-- Botões -->
+            <!--Aqui são os botões de cancelar para parar e vender para proseguir-->
             <div class="acoes">
-            <button id="cancelar_venda">Cancelar</button>
-            <button id="confirmar_venda">Vender</button>
+                <button id="cancelar_venda">Cancelar</button>
+                <button id="confirmar_venda">Vender</button>
             </div>
+
+        </div>
+    </div>
+
+    <!--modal de tirar produto-->
+    <div id="modal_de_tirar_produto" class="modal hidden" aria-modal="true" role="dialog" aria-labelledby="titulo_modal" aria-hidden="true">
+        <!--Aqui é onde fica as informações do modal-->
+        <div class="conteudo_do_modal">
+            <h2 id="titulo_modal">Tirar Produto</h2>
+            
+            <!--Aqui é o nome do produto-->
+            <div id="nome_modal">
+                <p id="nome_do_produto_de_tirar"></p>
+            </div>
+
+            <!--Aqui você escolhe a numeração-->
+            <div class="campo">
+                <label>Numerações</label>
+                <!--Aqui é onde fica as numerações-->
+                <div id="numeracoes_container_de_tirar" class="numeracoes"></div>
+            </div>
+
+            <!--Aqui são os botões de cancelar para parar e o de tirar-->
+            <div class="acoes">
+                <button id="cancelar_exclusao">Cancelar</button>
+                <button id="excluir_produto">Tirar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!--modal de adicionar numeracao-->
+    <div id="modal_de_adicionar_numeracao" class="modal hidden" aria-modal="true" role="dialog" aria-labelledby="titulo_modal" aria-hidden="true">
+        <!--Aqui é onde fica as informações do modal-->
+        <div class="conteudo_do_modal">
+            <h2 id="titulo_modal">Adicionar Produto</h2>
+            
+            <!--Aqui é o nome do produto-->
+            <div id="nome_modal">
+                <p id="nome_do_produto_de_adiconar_numeracao"></p>
+            </div>
+
+            <!--Aqui você escolhe a numeração-->
+            <div class="campo">
+                <label>Numerações</label>
+                <!--Aqui é onde fica as numerações-->
+                <div id="numeracoes_container_de_adicionar_numeracao" class="numeracoes"></div>
+            </div>
+
+            <!--Aqui são os botões de cancelar para parar e o de tirar-->
+            <div class="acoes">
+                <button id="cancelar_adicao_de_numeracao">Cancelar</button>
+                <button id="adicionar_numeracao">Adicionar</button>
+            </div>
+
         </div>
     </div>
     
